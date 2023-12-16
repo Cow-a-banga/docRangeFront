@@ -4,6 +4,7 @@ import Loader from "../Loader/Loader";
 import Scribe from "../Scribe/Scribe";
 import RangeDocs from "../Range/RangeDocs";
 import ip from "../ip_config";
+import "./App.css";
 
 const clear = () => {
   fetch(`${ip}/clear`)
@@ -47,11 +48,11 @@ const App: React.FC = () => {
         <Steps current={current} items={items} />
         <div style={{display: "flex", justifyContent: "space-between", marginTop: 24 }}>
           <div>
-            <Button type="primary" onClick={next} disabled={current >= steps.length - 1}>
-                Вперед
-            </Button>
             <Button style={{ margin: '0 8px' }} onClick={prev} disabled={current <= 0}>
                 Назад
+            </Button>
+            <Button type="primary" onClick={next} disabled={current >= steps.length - 1}>
+                Вперед
             </Button>
           </div>
           <div>

@@ -45,7 +45,7 @@ const RangedDocuments:React.FC<Props> = (props) => {
             key: 'score',
         },
         {
-            title: 'Действия',
+            title: 'Статистика',
             dataIndex: 'info',
             key: 'info',
             render: (info: Info[]) => <InfoCircleOutlined onClick={x => {setModalInfo(info); setIsModalOpen(true);}}/>,

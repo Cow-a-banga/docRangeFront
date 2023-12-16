@@ -68,7 +68,7 @@ const ModalInfo: React.FC<Props> = (props) => {
                    </Button>
                ]}
         >
-            <Table columns={columns} dataSource={props.info} pagination={false}/>
+            <Table columns={columns} dataSource={props.info} pagination={false} scroll={{ y: "calc(100vh/1.55)" }}/>
         </Modal>
     )
 }
