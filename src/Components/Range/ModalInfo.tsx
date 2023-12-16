@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import {Info} from "./RangedDocuments";
-import {Button, Modal, Table} from "antd";
+import {Button, Checkbox, Modal, Table} from "antd";
 
 interface Props{
     info: Info[]
@@ -56,7 +56,15 @@ const columns = [
     },
 ];
 
+const prepareData = (data: Info[], onlyNotZero: boolean) => {
+    if(!onlyNotZero)
+        return data;
+    return data.filter(x => x.S_norm !== 0);
+}
+
 const ModalInfo: React.FC<Props> = (props) => {
+    const [onlyNotZero, setOnlyNotZero] = useState(false);
+
     return (
         <Modal title="Параметры оценки"
                open={props.isModalOpen}
@@ -68,7 +76,8 @@ const ModalInfo: React.FC<Props> = (props) => {
                    </Button>
                ]}
         >
-            <Table columns={columns} dataSource={props.info} pagination={false} scroll={{ y: "calc(100vh/1.55)" }}/>
+            <Checkbox onChange={x => setOnlyNotZero(!onlyNotZero)}>Показать только ненулвые</Checkbox><br/>
+            <Table columns={columns} dataSource={prepareData(props.info, onlyNotZero)} pagination={false} scroll={{ y: "calc(100vh/1.55)" }}/>
         </Modal>
     )
 }

@@ -26,7 +26,7 @@ const RangeDocs: React.FC = () => {
             <InputNumber style={{width: 500, marginTop: 10}} addonBefore="Расстояние между понятиями" min={1} onChange={setDistance} /><br/>
             <Button type="primary" style={{marginTop:20, marginBottom: 50}} onClick={onClick} disabled={!beta || !distance}>Выполнить ранжирование</Button><br/>
             {isLoading && <Spin size="large" tip="Загрузка..." style={{marginLeft: "50%"}} />}
-            {items.length > 0 && <RangedDocuments items={items}/>}
+            {!isLoading && items.length > 0 && <RangedDocuments items={items}/>}
         </>
     );
 
